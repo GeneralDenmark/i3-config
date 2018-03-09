@@ -1,0 +1,51 @@
+ #!/usr/bin/env bash
+
+err() { printf '%s\n' "$*" >&2; }
+
+
+
+
+
+usage() {
+	while read; do printf '%s\n' "$REPLY"; done <<- EOF
+		Usage: rol [flags]
+		    Flags:
+		        --help|-h                       Show this message.
+		        -i [required string]  			Kills all the program with this name in it. Eg. steam, kills everything that has steam in it.
+	EOF
+}
+main() {
+
+	
+
+		while (( $# )); do
+		case "$1" in
+			--help|-h) usage; return 0;;
+			-i) break;;
+			
+			--) shift; break;;
+			-*)
+				err "Unknown key: $1"
+				usage
+				return 1
+			;;
+
+			*) break;;
+		esac
+		shift
+	done
+
+	StringToKill="$(ps aux | grep "$2" | awk '{print $2}')"
+	for temp in $StringToKill 
+	do
+		echo "Killing: $temp"
+		kill $temp
+	done
+
+	
+
+}
+
+
+main "$@"
+
