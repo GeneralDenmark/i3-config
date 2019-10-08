@@ -13,5 +13,6 @@ Includes custom script for i3 lock and for the i3blocks used in previous system.
 3. scrot
 4. xclip
 
+Tst
 
 What ever you want from the config file to be executed on startup.
